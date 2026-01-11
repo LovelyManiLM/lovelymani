@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>🎧 Name Based Music Player</title>
+
+<style>
+  body{
+    background:#0f0f0f;
+    color:white;
+    font-family:Arial, sans-serif;
+    text-align:center;
+    padding-top:60px;
+    margin:0;
+    min-height:100vh;
+  }
+  input{
+    padding:12px;
+    width:230px;
+    border-radius:10px;
+    border:none;
+    font-size:16px;
+    text-align:center;
+  }
+  button{
+    margin-top:15px;
+    padding:12px 30px;
+    border:none;
+    border-radius:25px;
+    background:#1db954;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+  }
+  .player{
+    margin-top:30px;
+  }
+  iframe{
+    width:90%;
+    max-width:500px;
+    height:280px;
+    border:none;
+    border-radius:15px;
+  }
+  footer{
+    position:fixed;
+    bottom:10px;
+    left:0;
+    width:100%;
+    text-align:center;
+    font-size:13px;
+    color:#aaa;
+  }
+</style>
+</head>
+
+<body>
+
+<h2>🎶 Enter Your Name</h2>
+<p>Type your name to play your special song 😎</p>
+
+<input type="text" id="nameInput" placeholder="Your name">
+<br>
+<button onclick="playSong()">▶ Play Song</button>
+
+<div class="player">
+  <iframe id="player" allow="autoplay" allowfullscreen></iframe>
+</div>
+
+<footer>
+  ❤️ Created by <b>Lovely Mani</b>
+</footer>
+
+<script>
+function playSong(){
+  let name = document.getElementById("nameInput").value.trim();
+
+  if(name === ""){
+    alert("😂 Dei peru podu da!");
+    return;
+  }
+
+  // NAME → SEARCH KEYWORD (PRANK LOGIC)
+  let searchQuery;
+
+  if(name.toLowerCase() === "mani"){
+    searchQuery = "tamil mass song";
+  }
+  else if(name.toLowerCase() === "ramesh"){
+    searchQuery = "tamil comedy song";
+  }
+  else if(name.toLowerCase() === "suresh"){
+    searchQuery = "tamil sad song";
+  }
+  else{
+    // default troll 😈
+    searchQuery = name + " funny tamil song";
+    alert("😜 " + name + " ku special song da!");
+  }
+
+  // AUTOMATIC YOUTUBE SEARCH PLAY
+  document.getElementById("player").src =
+    "https://www.youtube.com/embed?listType=search&list="
+    + encodeURIComponent(searchQuery)
+    + "&autoplay=1";
+}
+</script>
+
+</body>
+</html>
